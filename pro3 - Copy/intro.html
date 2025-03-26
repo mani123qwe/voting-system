@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Team Voting Machine 🏆</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            color: #fff;
+        }
+        .voting-box {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            width: 400px;
+            margin: auto;
+            color: #fff;
+            transition: transform 0.3s ease-in-out;
+        }
+        h2 {
+            font-weight: 600;
+        }
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .btn-primary {
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #28a745;
+            border-color: #28a745;
+            width: 100%;
+            transition: transform 0.2s ease-in-out;
+        }
+        .btn-primary:active {
+            transform: scale(1.1);
+        }
+        .form-label {
+            font-weight: 500;
+        }
+        .form-check-label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        input {
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            color: #fff;
+        }
+        input::placeholder {
+            color: #ddd;
+        }
+        input[type="radio"] {
+            accent-color: #28a745;
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100">
+    <div class="voting-box" id="votingBox">
+        <h2 class="text-center">Vote for Your Favorite IPL Team! 🏏</h2>
+        <div class="mb-3">
+            <label class="form-label">Enter Registration No:</label>
+            <input type="text" id="regNo" class="form-control" placeholder="Enter ID">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Select Your Team:</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="team" value="CSK (Chennai Super Kings) 🦁">
+                <label class="form-check-label">CSK (Chennai Super Kings) 🦁</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="team" value="MI (Mumbai Indians) 🌊">
+                <label class="form-check-label">MI (Mumbai Indians) 🌊</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="team" value="RCB (Royal Challengers Bangalore) 🔥">
+                <label class="form-check-label">RCB (Royal Challengers Bangalore) 🔥</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="team" value="KKR (Kolkata Knight Riders) ⚡">
+                <label class="form-check-label">KKR (Kolkata Knight Riders) ⚡</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="team" value="LSG (Lucknow Super Giants) 🏹">
+                <label class="form-check-label">LSG (Lucknow Super Giants) 🏹</label>
+            </div>
+        </div>
+        <button class="btn btn-primary" onclick="vote()">✅ Vote</button>
+    </div>
+
+    <script>
+        const validRegNumbers = new Set([101, 102, 103, 104, 105, 106, 107, 108]);
+        const usedRegNumbers = new Set();
+        const teams = {
+            "CSK (Chennai Super Kings) 🦁": 0,
+            "MI (Mumbai Indians) 🌊": 0,
+            "RCB (Royal Challengers Bangalore) 🔥": 0,
+            "KKR (Kolkata Knight Riders) ⚡": 0,
+            "LSG (Lucknow Super Giants) 🏹": 0
+        };
+
+        function vote() {
+            const regNo = document.getElementById("regNo").value;
+            const selectedTeam = document.querySelector('input[name="team"]:checked');
+            const votingBox = document.getElementById("votingBox");
+
+            if (!/^[0-9]+$/.test(regNo)) {
+                alert("⚠️ Registration number must be numeric!");
+                votingBox.classList.add("shake");
+                setTimeout(() => votingBox.classList.remove("shake"), 500);
+                return;
+            }
+
+            const regNoInt = parseInt(regNo);
+
+            if (!validRegNumbers.has(regNoInt)) {
+                alert("🚫 This registration number is not allowed!");
+                votingBox.classList.add("shake");
+                setTimeout(() => votingBox.classList.remove("shake"), 500);
+                return;
+            }
+
+            if (usedRegNumbers.has(regNoInt)) {
+                alert("⚠️ You have already voted! Duplicate voting is not allowed.");
+                votingBox.classList.add("shake");
+                setTimeout(() => votingBox.classList.remove("shake"), 500);
+                return;
+            }
+
+            if (!selectedTeam) {
+                alert("⚠️ Please select a team before voting!");
+                votingBox.classList.add("shake");
+                setTimeout(() => votingBox.classList.remove("shake"), 500);
+                return;
+            }
+
+            teams[selectedTeam.value]++;
+            usedRegNumbers.add(regNoInt);
+
+            alert(`✅ Your vote for ${selectedTeam.value} has been recorded successfully! 🎉`);
+
+            // Apply vote animation
+            votingBox.classList.add("fade-in");
+            setTimeout(() => votingBox.classList.remove("fade-in"), 1000);
+
+            if (usedRegNumbers.size === validRegNumbers.size) {
+                releaseResults();
+            }
+        }
+
+        function releaseResults() {
+            let resultText = "🏆 Final Voting Results: \n";
+            for (const [team, votes] of Object.entries(teams)) {
+                resultText += `${team}: ${votes} votes\n`;
+            }
+            alert(resultText);
+        }
+    </script>
+</body>
+</html>
