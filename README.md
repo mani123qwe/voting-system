@@ -1,5 +1,6 @@
 # voting-system
-Build a mini voting system using css,js,html .As a first year student we can't able to implement the biometry verification and finger print verification in it.we have many future idea to implement in it
+Build a mini voting system using css,js,html .As a first year student we can't able to implement the biometry verification and finger print verification in it.we have many future idea to implement in it.you can replace the registory number with the voter id numbers and we can able to add the otp system in it.For more security we can add the 
+OTP system with the Aadhar number .Because the OTP will be send to the respected phone number which is linked with Aadhar.we can see the result immediately!!
 
 ---
 # IPL Team Voting Machine 🏏
@@ -50,6 +51,6 @@ A simple web-based voting system where users can vote for their favorite **India
 - **Database Integration** – Store votes permanently.  
 - **More Teams** – Add all IPL teams.  
 - **Live Vote Dashboard** – Display real-time vote counts.  
-- **Mobile App Version** – Convert this into an app for easier access.  
+- **Mobile App Version** – Convert this into an app for easier access. 
 
 ---
