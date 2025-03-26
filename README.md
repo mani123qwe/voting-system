@@ -1,5 +1,6 @@
 # voting-system
-build a mini voting system using css,js,html .As a first year student we can't able to implement the biometry verification and finger print verification in it.we have many future idea to implement in it
+Build a mini voting system using css,js,html .As a first year student we can't able to implement the biometry verification and finger print verification in it.we have many future idea to implement in it
+
 ---
 # IPL Team Voting Machine 🏏
 
