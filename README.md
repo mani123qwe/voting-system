@@ -3,6 +3,10 @@ Build a mini voting system using css,js,html .As a first year student we can't a
 OTP system with the Aadhar number .Because the OTP will be send to the respected phone number which is linked with Aadhar.we can see the result immediately!!
 
 ---
+## 📸 Screenshot  
+![Voting System UI](Screenshot.png)
+
+---
 # IPL Team Voting Machine 🏏
 
 A simple web-based voting system where users can vote for their favorite **Indian Premier League (IPL) team**. It ensures fairness by verifying registration numbers and preventing duplicate votes.
