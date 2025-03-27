@@ -4,7 +4,7 @@ OTP system with the Aadhar number .Because the OTP will be send to the respected
 
 ---
 ## 📸 Screenshot  
-![Voting System UI](Screenshot.png)
+![Voting System UI](Screenshot 2025-03-26 210446.png)
 
 ---
 # IPL Team Voting Machine 🏏
